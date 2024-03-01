@@ -1,20 +1,24 @@
-import React from "react"
-import '../../src/App.css'
-import { Table } from "react-bootstrap"
-export default function TransactionTable({transactions, onDelete, onEdit}){
+import React from "react";
+import '../../src/App.css';
+import { Table } from "react-bootstrap";
 
+export default function TransactionTable({ transactions, onDelete, onEdit, displayForm }) {
    const handleDelete = (id) => {
-          onDelete(id)
-   }
+      // eslint-disable-next-line no-restricted-globals
+      if (confirm("Do you want to delete the transaction?")) return alert("Transaction was not deleted.");
+      onDelete(id);
+   };
 
    const handleEdit = (id) => {
-      onEdit(id)
-   }
-    return (
-       <>
+      displayForm(true);
+      onEdit(id);
+   };
+
+   return (
+      <>
          <div className="container">
-             <Table striped bordered hover responsive>
-                <thead>
+            <Table striped bordered hover responsive>
+               <thead>
                   <tr>
                      <th>ID</th>
                      <th>Description</th>
@@ -23,24 +27,24 @@ export default function TransactionTable({transactions, onDelete, onEdit}){
                      <th>Category</th>
                      <th>Actions</th>
                   </tr>
-                </thead>
-                <tbody>
+               </thead>
+               <tbody>
                   {transactions.map((transaction) => (
-                     <tr key={transaction.id}> 
-                          <td>{transaction.id}</td>
-                          <td>{transaction.description}</td>
-                          <td>{transaction.amount}</td>
-                          <td>{transaction.date}</td>
-                          <td>{transaction.category}</td>
-                          <td>
-                             <button onClick={() => handleDelete(transaction.id)} className="btn btn-danger">Delete</button>
-                             <button onClick={() => handleEdit(transaction.id)} className="btn btn-primary">Edit</button>
-                          </td>
+                     <tr key={transaction.id}>
+                        <td>{transaction.id}</td>
+                        <td>{transaction.description}</td>
+                        <td>{transaction.amount}</td>
+                        <td>{transaction.date}</td>
+                        <td>{transaction.category}</td>
+                        <td>
+                           <button onClick={() => handleDelete(transaction.id)} className="btn btn-danger">Delete</button>
+                           <button onClick={() => handleEdit(transaction.id)} className="btn btn-primary">Edit</button>
+                        </td>
                      </tr>
                   ))}
-                </tbody>
-             </Table>
+               </tbody>
+            </Table>
          </div>
-       </>
-    )
+      </>
+   );
 }

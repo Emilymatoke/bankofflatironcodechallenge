@@ -10,7 +10,7 @@ export default function About(){
                 <div className="col-md-8 card">
                     <h2>About FlatIron Bank</h2>
                     <p>
-                    Flatiron Bank is a digital bank that offers simple, secure, and smart banking solutions for individuals and businesses. We believe that banking should be easy, convenient, and transparent. That’s why we created Flatiron Bank, a bank that puts you in control of your money.  
+                    For both individuals and organizations, Flatiron Bank is a digital bank that provides straightforward, safe, and intelligent banking options. We think banking ought to be simple, practical, and open. For this reason, we established Flatiron Bank—a financial institution that gives you financial control.
                     </p>
 
                     <h2>About FlatIron Bank</h2>
